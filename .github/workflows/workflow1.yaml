@@ -3,6 +3,8 @@
 # and prints out some more text
 name: workflow1
 on:
+  push:
+    branches: [main]
   pull_request:
     branches: [main]
 jobs:
