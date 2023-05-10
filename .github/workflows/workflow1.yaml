@@ -8,6 +8,21 @@ on:
   pull_request:
     branches: [main]
 jobs:
+  # this job creates output envs for other jobs
+  creates-envs:
+    runs-on: ubuntu-latest
+    outputs:
+      env1: ${{ steps.step1.outputs.env1 }}
+      env2: ${{ steps.step2.outputs.env2 }}
+    steps:
+      - name: step1
+        id: step1
+        run: |
+          echo "::set-output name=env1::env1"
+      - name: step2
+        id: step2
+        run: |
+          echo "::set-output name=env2::env2"
   job1:
     runs-on: ubuntu-latest
     steps:
