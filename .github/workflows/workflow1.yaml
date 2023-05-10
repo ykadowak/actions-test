@@ -12,8 +12,8 @@ jobs:
   creates-envs:
     runs-on: ubuntu-latest
     outputs:
-      env1: ${{ steps.step1.outputs.env1 }}
-      env2: ${{ steps.step2.outputs.env2 }}
+      env1: ${{ steps.step1.outputs.name }}
+      env2: ${{ steps.step2.outputs.name }}
     steps:
       - name: step1
         id: step1
@@ -28,7 +28,7 @@ jobs:
     needs: creates-envs
     steps:
       - name: print-envs
-        run: echo ${{ needs.creates-envs.outputs.env1 }} ${{ needs.creates-envs.outputs.env1 }}
+        run: echo ${{ needs.creates-envs.outputs.env1 }} ${{ needs.creates-envs.outputs.env2 }}
   job2:
     runs-on: ubuntu-latest
     steps:
