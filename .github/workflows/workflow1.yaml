@@ -6,7 +6,9 @@ on:
   push:
     branches: [main]
   pull_request:
-    branches: [main]
+    types:
+      - "labeled"
+  workflow_dispatch:
 jobs:
   # this job creates output envs for other jobs
   creates-envs:
@@ -24,12 +26,14 @@ jobs:
         run: |
           echo "name=env2" >> $GITHUB_OUTPUT
   print-step-1:
+    if: github.event.label.name == 'trigerci'
     runs-on: ubuntu-latest
     needs: creates-envs
     steps:
       - name: print-envs
         run: echo ${{ needs.creates-envs.outputs.env1 }} ${{ needs.creates-envs.outputs.env2 }}
   job2:
+    if: github.event.label.name == 'trigerci'
     runs-on: ubuntu-latest
     steps:
       - name: step3
