@@ -1,7 +1,7 @@
 # github actions workflow that has two jobs just printing out some text
 # and then a third job that depends on the first two jobs
 # and prints out some more text
-name: workflow1
+name: workflow2
 on:
   push:
     branches: [main]
