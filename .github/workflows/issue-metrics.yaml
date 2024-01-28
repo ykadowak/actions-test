@@ -31,6 +31,7 @@ jobs:
       env:
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         SEARCH_QUERY: 'repo:vdaas/vald is:pr created:${{ env.last_month }}'
+        HIDE_TIME_TO_ANSWER: true
 
     - name: Create issue
       uses: peter-evans/create-issue-from-file@v4
