@@ -1,3 +1,4 @@
+#
 name: Monthly review time metrics
 on:
   workflow_dispatch:
